@@ -22,6 +22,7 @@ It consists of a **Web API** for browsing characters, a **console-based backgrou
 ## Project Structure
 
 BrainBay/
+
 ├─ BrainBay.API/ # Web API project
 
 ├─ BrainBay.Console.BackgroundWorker/ # Background worker project
