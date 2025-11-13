@@ -25,7 +25,7 @@ BrainBay/
 
 ├─ BrainBay.API/ # Web API project
 
-├─ BrainBay.Console.BackgroundWorker/ # Background worker project
+├─ BrainBay.Console/ # Background worker project
 
 ├─ BrainBay.Application/ # Application layer (services, mapping, DI)
 
