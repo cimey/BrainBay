@@ -23,12 +23,19 @@ It consists of a **Web API** for browsing characters, a **console-based backgrou
 
 BrainBay/
 ├─ BrainBay.API/ # Web API project
+
 ├─ BrainBay.Console.BackgroundWorker/ # Background worker project
+
 ├─ BrainBay.Application/ # Application layer (services, mapping, DI)
+
 ├─ BrainBay.Core/ # Domain entities and value objects
+
 ├─ BrainBay.Infrastructure/ # Database context, repositories, caching
+
 ├─ BrainBay.IntegrationTests/ # Integration tests
+
 ├─ BrainBay.UnitTests/ # Unit tests
+
 ├─ docker-compose.yml # Docker Compose for API, Worker, SQL Server, Redis
 
 
