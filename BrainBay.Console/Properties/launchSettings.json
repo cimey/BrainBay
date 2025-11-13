@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BrainBay.Console": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

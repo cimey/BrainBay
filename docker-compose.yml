@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  brainbay.api:
+    build:
+      context: .
+      dockerfile: BrainBay.API/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Default=Server=sqlserver,1433;Database=BrainBayDb;User Id=sa;Password=Your_password123;TrustServerCertificate=True
+      - Redis__Host=redis
+      - Redis__Port=6379
+      - Redis__InstanceName=BrainBay_
+      - CacheDurationMinutes=5
+      - CharacterCacheKey=_characters
+    depends_on:
+      - sqlserver
+      - redis
+
+  brainbay.worker:
+    build:
+      context: .
+      dockerfile: BrainBay.Console/Dockerfile
+    environment:
+      - ConnectionStrings__Default=Server=sqlserver,1433;Database=BrainBayDb;User Id=sa;Password=Your_password123;TrustServerCertificate=True
+      - Redis__Host=redis
+      - Redis__Port=6379
+      - Redis__InstanceName=BrainBay_
+      - CacheDurationMinutes=5
+      - CharacterCacheKey=_characters
+      - RefreshIntervalInHours=1 
+    depends_on:
+      - sqlserver
+      - redis
+
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge
+    container_name: brainbay-sql
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  redis:
+    image: redis:7
+    container_name: brainbay-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  sql_data:
