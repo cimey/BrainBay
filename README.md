@@ -74,9 +74,11 @@ BrainBay/
 ```bash
 git clone https://github.com/cimey/BrainBay.git
 cd BrainBay
-run below commands
+
 docker-compose build
 docker-compose up -d
+```
+
 - API: http://localhost:5000
 - SQL Server: localhost,1433
 - Redis: localhost:6379
